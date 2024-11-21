@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
 </head>
 <body>
     <div class="pomodoro-timer">
@@ -14,14 +15,22 @@
             <div class="fill"></div>
         </div>
         <hr/>
-    <div class="task-container"></div>
+    <div class="task-container">
+        <div class="task-block">
+            <p class="delete-icon"><span class="material-symbols-outlined">
+                delete
+                </span></p>
+            <p>First Task</p>
+            <button class="controller-button">Start</button>
+        </div>
+    </div>
     <div class="input-container">
         <input type="text" placeholder="tasks go here ...">
         <button class="sumbit-button">Add</button>
     </div>
     <br/>
-    <p>Each task will delete itself once complete</p>
-    <p>To pause a task, simply click on the Active Button again</p>
+    <p class="sub-text">Each task will delete itself once complete</p>
+    <p class="sub-text">To pause a task, simply click on the Active Button again</p>
     </div>
     
     <script src="js/app.js"></script>
