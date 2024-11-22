@@ -37,7 +37,7 @@ h1{
     background-color: aqua;
 }
 .task-block{
-    background-color: rgb(41,40,96);
+    background-color: rgb(41,80,96);
     border-radius: 20px;
     margin: 10px 0;
     height: 60px;
@@ -55,7 +55,7 @@ h1{
 .task-block p{
     width: 242px;
     font-size: 20px;
-   
+   text-align: left;
 }
 .task-block .controller-button{
 height: 100%;
