@@ -3,7 +3,7 @@ const submitButton = document.querySelector(".sumbit-button");
 const timeLeftContent = document.querySelector("#time-left");
 const fillTimer = document.querySelector(".fill");
 
-const startCount = 5;
+const startCount = 25*60;
 let timeLeft = startCount;
 let timerId;
 //Task Seed
