@@ -1,17 +1,25 @@
 const taskContainer = document.querySelector(".task-container");
-const submitButton = document.querySelector(".sumbit-button")
+const submitButton = document.querySelector(".sumbit-button");
+const timeLeftContent = document.querySelector("#time-left");
+const fillTimer = document.querySelector(".fill")
+
+const startCount = 5
+let timeLeft = startCount
+let timerId
+
+
 let tasks = [
   {
     name: "Practice CSS animations",
-    priority: 1,
+    priority: 0,
   },
   {
     name: "Dev community Work",
-    priority: 4,
+    priority: 2,
   },
   {
     name: "Algo work",
-    priority: 3,
+    priority: 1,
   },
 ];
 
@@ -19,39 +27,69 @@ let tasks = [
 const descendingTasks = tasks.sort(
   (taskA, taskB) => taskA.priority - taskB.priority
 );
-console.log(descendingTasks);
+function handleClick(start){
+countDown(start)
+}
+ function countDown(start){
+  timerId =setInterval (()=>{ 
+    timeLeft--
+    timeLeftContent.textContent=timeLeft
+    fillTimer.style.width=(timeLeft/startCount)*100+'%'
+    if(timeLeft<=0){
+      clearInterval(timerId)
+      console.log(start)
+      delete descendingTasks[start.id]
+      start.parentNode.parentNode.remove()
+      timeLeft = startCount
+      timeLeftContent.textContent = startCount
+    }
+  }, 1000)
+ }
+ 
 function render() {
-  
-  descendingTasks.forEach((task) => {
+  descendingTasks.forEach((task,index) => {
     let taskBlock = `<div class="task-block">
             <p class="delete-icon"><span class="material-symbols-outlined">
                 delete
                 </span></p>
             <p>${task.name}</p>
-            <button class="controller-button">Start</button>
+            <button id = ${index} class="controller-button">Start</button>
         </div>`;
     const filledBlock = document.createElement("div");
     filledBlock.innerHTML = taskBlock;
-    
-    
+
     taskContainer.append(filledBlock);
   });
-  const deleteElement = document.querySelectorAll(".delete-icon")
-  console.log(deleteElement)
-  deleteElement.forEach((el)=>{el.addEventListener('click', deleteTask )})
-  
+  const deleteElement = document.querySelectorAll(".delete-icon");
+  const controller = document.querySelectorAll(".controller-button")
+  deleteElement.forEach((el) => {
+    el.addEventListener("click", deleteTask);
+  });
+  controller.forEach((start) => {
+    start.addEventListener("click",()=> handleClick(start));
+  });
 }
 
 render();
- function deleteTask(e){
-    console.log(e.target.parentNode.parentNode)
-    e.target.parentNode.parentNode.remove()
- }
+function deleteTask(e) {
+  console.log(e.target.parentNode.parentNode);
+  e.target.parentNode.parentNode.remove();
+}
 
- function addTask(){
-    const inputElemnent = document.querySelector(".text-input")
-    const value = inputElemnent.value
-    console.log(value)
- }
+function addTask() {
+  const inputElemnent = document.querySelector(".text-input");
+  const value = inputElemnent.value;
 
- submitButton.addEventListener("click", addTask)
+  if (value) {
+    taskContainer.innerHTML=''
+    inputElemnent.value = ''
+    tasks.push({
+      name: value,
+      priority: tasks.length,
+    });
+  }
+  console.log(tasks);
+  render()
+}
+
+submitButton.addEventListener("click", addTask);
