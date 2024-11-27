@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer</title>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete"
+    />
+  </head>
+  <body>
     <div class="pomodoro-timer">
-        <h1 id="time-left">5</h1>
-        <h3>Countdown in seconds</h3>
-        <div class="custom-slider">
-            <div class="fill"></div>
-        </div>
-        <hr/>
-    <div class="task-container">
-      
-    </div>
-    <div class="input-container">
-        <input  class="text-input" placeholder="tasks go here ...">
+      <h1 id="time-left">25:00</h1>
+      <h3>Countdown in seconds</h3>
+      <div class="custom-slider">
+        <div class="fill"></div>
+      </div>
+      <hr />
+      <div class="task-container"></div>
+      <div class="input-container">
+        <input class="text-input" placeholder="tasks go here ..." />
         <button class="sumbit-button">Add</button>
+      </div>
+      <br />
+      <p class="sub-text">Each task will delete itself once complete</p>
+      <p class="sub-text">
+        To pause a task, simply click on the Active Button again
+      </p>
     </div>
-    <br/>
-    <p class="sub-text">Each task will delete itself once complete</p>
-    <p class="sub-text">To pause a task, simply click on the Active Button again</p>
-    </div>
-    
+
     <script src="js/app.js"></script>
-</body>
+  </body>
 </html>
